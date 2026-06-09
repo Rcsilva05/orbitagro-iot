@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "author": "OrbitAgro - FIAP GS 2026/1",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot_umidade",
+      "top": -106.9,
+      "left": -221,
+      "attrs": { "value": "35" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -114.9, "left": 148.2, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 140.6,
+      "left": -211.2,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_verde",
+      "top": 54,
+      "left": 195.8,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_vermelho",
+      "top": 111.6,
+      "left": 205.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 144,
+      "left": 19.2,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 224.75,
+      "left": 220.8,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-ssd1306", "id": "oled1", "top": 256.3, "left": -94.1, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "txt1",
+      "top": -163.2,
+      "left": -240,
+      "attrs": { "text": "Umidade do Solo\n(gire para simular)" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt2",
+      "top": -96,
+      "left": 38.4,
+      "attrs": { "text": "DHT22\nTemperatura" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt3",
+      "top": 144,
+      "left": -278.4,
+      "attrs": { "text": "Botao\nIrrigacao" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt4",
+      "top": 48,
+      "left": 240,
+      "attrs": { "text": "LED Verde\nSolo OK" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt5",
+      "top": 105.6,
+      "left": 249.6,
+      "attrs": { "text": "LED Vermelho\nAlerta Seca" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txt6",
+      "top": 288,
+      "left": -220.8,
+      "attrs": { "text": "OLED 128x64\nInterface Local" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot_umidade:SIG", "esp:34", "green", [ "v0" ] ],
+    [ "pot_umidade:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pot_umidade:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "btn1:1.r", "esp:18", "green", [ "v0" ] ],
+    [ "btn1:2.r", "esp:GND.2", "black", [ "v0" ] ],
+    [ "led_verde:A", "esp:26", "green", [ "v0" ] ],
+    [ "led_verde:C", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led_vermelho:A", "esp:27", "green", [ "v0" ] ],
+    [ "led_vermelho:C", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "esp:GND.1", "black", [ "v0" ] ],
+    [ "oled1:SCL", "esp:22", "green", [ "v0" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v0" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
